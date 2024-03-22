@@ -2,8 +2,8 @@ export const ImageCard = () => {
   return (
     <div className="max-w-lg px-4 md:max-w-xs lg:max-w-md rounded overflow-hidden shadow-lg">
       <img
-        className="w-full h-48"
-        src="https://picsum.photos/500"
+        className="w-full aspect-video"
+        src="https://picsum.photos/1280/1080"
         alt="Card image"
       />
       <div className="px-6 py-4">

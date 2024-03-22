@@ -1,70 +1,126 @@
+"use client";
 import { useState } from "react";
-import { BellIcon, HomeIcon, UserIcon, InboxIcon } from "@heroicons/react/outline";
+import {
+  InboxIcon,
+  AnnotationIcon,
+  CurrencyDollarIcon,
+  NewspaperIcon,
+  ViewListIcon,
+  CalendarIcon,
+  ChartPieIcon,
+  UserGroupIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/outline";
+
+import { BellIcon } from "@heroicons/react/solid";
 
 export default function Sidebar() {
+  const SIDEBAR_ITEMS = [
+    {
+      icon: AnnotationIcon,
+      title: "Discussion Forum",
+      link: "#",
+    },
+    {
+      icon: CurrencyDollarIcon,
+      title: "Market Stories",
+      link: "#",
+    },
+    {
+      icon: InboxIcon,
+      title: "Sentiment",
+      link: "#",
+    },
+    {
+      icon: UserGroupIcon,
+      title: "Market",
+      link: "#",
+    },
+    {
+      icon: ChartPieIcon,
+      title: "Sector",
+      link: "#",
+    },
+    {
+      icon: ViewListIcon,
+      title: "Watchlist",
+      link: "#",
+    },
+    {
+      icon: CalendarIcon,
+      title: "Events",
+      link: "#",
+    },
+    {
+      icon: NewspaperIcon,
+      title: "News/Interview",
+      link: "#",
+    },
+  ];
+
+  const [selected, setSelected] = useState(SIDEBAR_ITEMS[0].title);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Function to toggle the sidebar
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
-    <div className={`h-screen flex md:sticky fixed top-0 ${!isSidebarOpen ? "w-16" : "auto"}`}>
-      <div className={`${isSidebarOpen ? "block" : "hidden"} bg-gray-200 w-64 p-4`}>
-        {/* Avatar, User Name, and Notification */}
-        <div className="flex items-center mb-4">
-          <img src="https://via.placeholder.com/40" alt="User Avatar" className="w-10 h-10 rounded-full mr-2" /> {/* Avatar */}
-          <div>
-            <p className="font-semibold">Hello, User</p> {/* User name */}
-            <div className="flex items-center text-red-500">
-              <BellIcon className="h-4 w-4 mr-1" /> {/* Bell icon with red dot */}
-              <span className="text-xs">Notifications</span>
+    <div
+      className={`h-screen flex md:sticky fixed top-0 text-white ${
+        !isSidebarOpen ? "w-16" : "auto"
+      }`}
+    >
+      <div
+        className={`${isSidebarOpen ? "block" : "hidden"} bg-blue-950 w-64 p-4`}
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex align-center gap-1">
+            <img
+              src="https://i.pravatar.cc/150"
+              alt="User Avatar"
+              className="w-10 h-10 rounded-full mr-2"
+            />{" "}
+            <div className="flex font-semibold flex-col justify-center">
+              {" "}
+              John Doe{" "}
             </div>
           </div>
+
+          <div className="flex items-center relative">
+            <BellIcon className="h-6 w-6 mr-1 stroke-white fill-white" />
+            <div className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></div>
+          </div>
         </div>
-        {/* Divider */}
         <hr className="my-4 border-gray-400" />
-        {/* List Items */}
         <ul>
-          <li className="mb-4 flex items-center">
-            <HomeIcon className="w-6 h-6 mr-2" /> {/* Home icon */}
-            <a href="#" className="text-blue-500">
-              Home
-            </a>
-          </li>
-          <li className="mb-4 flex items-center">
-            <UserIcon className="w-6 h-6 mr-2" /> {/* User icon */}
-            <a href="#" className="text-blue-500">
-              About
-            </a>
-          </li>
-          <li className="mb-4 flex items-center">
-            <InboxIcon className="w-6 h-6 mr-2" /> {/* Inbox icon */}
-            <a href="#" className="text-blue-500">
-              Contact
-            </a>
-          </li>
+          {SIDEBAR_ITEMS.map((item, index) => (
+            <li
+              key={index}
+              onClick={() => setSelected(item.title)}
+              className={`flex cursor-pointer items-center my-2 p-2 pl-4 rounded-full ${
+                selected === item.title ? "bg-sky-900" : "transparent"
+              }`}
+            >
+              <item.icon className="h-6 w-6 mr-2" />
+              <text className="text-white font-medium"> {item.title} </text>
+            </li>
+          ))}
         </ul>
       </div>
       <div className="flex-grow">
-        {/* Button to toggle the sidebar */}
         <button
           onClick={toggleSidebar}
-          className="absolute top-1/2 transform -translate-y-1/2 bg-blue-950 text-white h-24 w-6"
+          className="absolute top-1/2 transform -translate-y-1/2 bg-blue-950 text-white h-24 w-6 rounded-r"
         >
           {isSidebarOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
-            </svg>
+            <ChevronLeftIcon className="w-6 h-6" />
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
-            </svg>
+            <ChevronRightIcon className="w-6 h-6" />
           )}
         </button>
       </div>
     </div>
   );
 }
-

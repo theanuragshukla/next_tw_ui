@@ -7,7 +7,7 @@ export default function Heading({
 }) {
   return (
     <div
-      className={`font-bold mr-auto text-red-400 bg-gray-200 p-2 uppercase text-xl ${extraClass}`}
+      className={`font-bold mr-auto text-red-400 bg-gray-200 p-2 uppercase text-2xl ${extraClass}`}
     >
       {title}
     </div>

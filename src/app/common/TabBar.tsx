@@ -14,7 +14,7 @@ export default function TabBar({
   };
 
   return (
-    <div className={`flex relative bg-blue-900 justify-center ${className}`}>
+    <div className={`flex relative bg-sky-900 justify-center ${className}`}>
       {tabs.map((tab, index) => (
         <button
           key={index}

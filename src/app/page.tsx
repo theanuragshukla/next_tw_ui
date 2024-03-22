@@ -26,7 +26,7 @@ export default function Home() {
         >
           <Heading
             title="Discussion Forum"
-            extraClass="hidden md:block text-md"
+            extraClass="hidden md:block text-xl"
           />
           {[...Array(10)].map(() => (
             <Card key={Math.random()} />
