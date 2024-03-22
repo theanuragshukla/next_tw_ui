@@ -29,7 +29,7 @@ export const Card = () => {
     },
   ];
   return (
-    <div className="flex p-4 border border-gray-200 rounded-lg shadow-lg">
+    <div className="flex p-4 border border-gray-200 rounded-lg shadow-lg ">
       <div className="flex-shrink-0 mr-4">
         <img
           src="https://i.pravatar.cc/100"
@@ -40,12 +40,12 @@ export const Card = () => {
       <div className="flex-grow">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center ">
-            <h2 className="font-bold mr-2">John Doe</h2>
-            <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+            <h2 className="font-bold mr-2 md:text-sm lg:text-md">John Doe</h2>
+            <span className="bg-sky-800 text-white text-xs px-2 py-1 rounded-full">
               Sector 2
             </span>
           </div>
-          <p className="text-sm text-gray-700 mb-4 text-blue-500 font-bold">
+          <p className="text-sm text-gray-700 mb-4 text-sky-500 font-bold">
             2 min ago
           </p>
         </div>
