@@ -3,8 +3,13 @@ export default function TabBar({
   setActiveTab,
   activeTab,
   className = "",
-}) {
-  const switchTab = (index) => {
+}:{
+  tabs: string[],
+  setActiveTab: (index: number) => void,
+  activeTab: number,
+  className?: string
+}){
+  const switchTab = (index:number) => {
     setActiveTab(index);
   };
 
